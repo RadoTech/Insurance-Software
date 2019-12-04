@@ -58,11 +58,11 @@ namespace MTPL_Insurance
             //    Console.Write("Please enter Vehicle's Weight in tones: ");
             //    double vehiclesWeight = double.Parse(Console.ReadLine());
             //}
-            else if (vehiclesType == "microbus" || vehiclesType == "bus")
-            {
-                Console.Write("Please enter Vehicle's seats: ");
-                int vehiclesSeats = int.Parse(Console.ReadLine());
-            }
+            //else if (vehiclesType == "microbus" || vehiclesType == "bus")
+            //{
+            //    Console.Write("Please enter Vehicle's seats: ");
+            //    int vehiclesSeats = int.Parse(Console.ReadLine());
+            //}
             else if (vehiclesType == "tractor")
             {
                 Console.Write("Please enter Vehicle's Weight in tones: ");
@@ -92,6 +92,10 @@ namespace MTPL_Insurance
             double truck10 = 710; //for trucks with weight up to 10 t.
             double truck20 = 930; //for trucks with weight up to 20 t.
             double truckOver20 = 1500; //for trucks with weight over 20 t.
+            double microbus = 900; //for microbus & bus with maximum seats of 9 (8+1). 
+            double bus30 = 1200; //for bus with maximum seats of 30 (29+1). 
+            double bus60 = 1800; //for bus with maximum seats of 60 (59+1). 
+            double busOver60 = 2200; //for bus with maximum seats over 60(double-decker bus). 
 
             //Calculations:
 
@@ -181,6 +185,26 @@ namespace MTPL_Insurance
             {
                 Console.Write("Please enter Vehicle's seats: ");
                 int vehiclesSeats = int.Parse(Console.ReadLine());
+                if (vehiclesType == "microbus" && vehiclesSeats <= 9)// 8+1 including driver's seat
+                {
+                    Premium += microbus;
+                }
+                else if (vehiclesType == "microbus" && vehiclesSeats > 9)
+                {
+                    vehiclesType = "bus";
+                }
+                if (vehiclesType == "bus" && vehiclesSeats <= 30)
+                {
+                    Premium += bus30;
+                }
+                else if (vehiclesType == "bus" && vehiclesSeats <= 60)
+                {
+                    Premium += bus60;
+                }
+                else if (vehiclesType == "bus" && vehiclesSeats > 60)
+                {
+                    Premium += busOver60;
+                }
             }
             else if (vehiclesType == "tractor")
             {
