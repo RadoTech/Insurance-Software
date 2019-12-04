@@ -53,11 +53,11 @@ namespace MTPL_Insurance
                     vehiclesVolume = int.Parse(Console.ReadLine());
                 }
             }
-            else if (vehiclesType == "truck" || vehiclesType == "light truck")
-            {
-                Console.Write("Please enter Vehicle's Weight in tones: ");
-                double vehiclesWeight = double.Parse(Console.ReadLine());
-            }
+            //else if (vehiclesType == "truck" || vehiclesType == "light truck")
+            //{
+            //    Console.Write("Please enter Vehicle's Weight in tones: ");
+            //    double vehiclesWeight = double.Parse(Console.ReadLine());
+            //}
             else if (vehiclesType == "microbus" || vehiclesType == "bus")
             {
                 Console.Write("Please enter Vehicle's seats: ");
@@ -87,7 +87,7 @@ namespace MTPL_Insurance
             double car2000Tariff = 340; //up to 2000 kb. cm. all engines except of full electric;
             double car3000Tariff = 390; //up to 3000 kb. cm. all engines except of full electric;
             double carOver3000Tariff = 490; //over 3000 kb. cm. all engines except of full electric;
-            double lightTruck = 380; //for light trucks == trucks with weight in tones up to 3.5 t.
+            double lightTruck = 450; //for light trucks == trucks with weight in tones up to 3.5 t.
             double truck5 = 580; //for trucks with weight up to 5 t.
             double truck10 = 710; //for trucks with weight up to 10 t.
             double truck20 = 930; //for trucks with weight up to 20 t.
@@ -152,6 +152,30 @@ namespace MTPL_Insurance
             {
                 Console.Write("Please enter Vehicle's Weight in tones: ");
                 double vehiclesWeight = double.Parse(Console.ReadLine());
+                if (vehiclesType == "light truck" && vehiclesWeight <= 3.5)
+                {
+                    Premium += lightTruck;
+                }
+                else if (vehiclesType == "light truck" && vehiclesWeight > 3.5)
+                {
+                    vehiclesType = "truck";
+                }
+                if (vehiclesType == "truck" && vehiclesWeight <= 5)
+                {
+                    Premium += truck5;
+                }
+                else if (vehiclesType == "truck" && vehiclesWeight <= 10)
+                {
+                    Premium += truck10;
+                }
+                else if (vehiclesType == "truck" && vehiclesWeight <= 20)
+                {
+                    Premium += truck20;
+                }
+                else if (vehiclesType == "truck" && vehiclesWeight > 20)
+                {
+                    Premium += truckOver20;
+                }
             }
             else if (vehiclesType == "microbus" || vehiclesType == "bus")
             {
