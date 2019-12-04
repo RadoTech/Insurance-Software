@@ -53,26 +53,6 @@ namespace MTPL_Insurance
                     vehiclesVolume = int.Parse(Console.ReadLine());
                 }
             }
-            //else if (vehiclesType == "truck" || vehiclesType == "light truck")
-            //{
-            //    Console.Write("Please enter Vehicle's Weight in tones: ");
-            //    double vehiclesWeight = double.Parse(Console.ReadLine());
-            //}
-            //else if (vehiclesType == "microbus" || vehiclesType == "bus")
-            //{
-            //    Console.Write("Please enter Vehicle's seats: ");
-            //    int vehiclesSeats = int.Parse(Console.ReadLine());
-            //}
-            //else if (vehiclesType == "tractor")
-            //{
-            //    Console.Write("Please enter Vehicle's Weight in tones: ");
-            //    double vehiclesWeight = double.Parse(Console.ReadLine());
-            //}
-            else if (vehiclesType == "trailer")
-            {
-                Console.Write("Please enter Trailer's length in meters: ");
-                double trailersLength = double.Parse(Console.ReadLine());
-            }
 
             //Tariff:
 
@@ -96,8 +76,10 @@ namespace MTPL_Insurance
             double bus30 = 1200; //for bus with maximum seats of 30 (29+1). 
             double bus60 = 1800; //for bus with maximum seats of 60 (59+1). 
             double busOver60 = 2200; //for bus with maximum seats over 60(double-decker bus). 
-            double tractor20 = 150; //
-            double tractorOver20 = 290; //
+            double tractor20 = 150; //for agricultural tractors up to 20 tones weight.
+            double tractorOver20 = 290; //for agricultural tractors over 20 tones weight.
+            double trailer10 = 75; //for trailers up to 10 meters length.
+            double trailerOver10 = 175; //for trailers over 10 meters length.
 
             //Calculations:
 
@@ -225,6 +207,14 @@ namespace MTPL_Insurance
             {
                 Console.Write("Please enter Trailer's length in meters: ");
                 double trailersLength = double.Parse(Console.ReadLine());
+                if (trailersLength <= 10)
+                {
+                    Premium += trailer10;
+                }
+                else if (trailersLength > 10)
+                {
+                    Premium += trailerOver10;
+                }
             }
             //Output:
             Console.WriteLine($"Your MTPL Premium is: {Premium:f2} BGN.");
