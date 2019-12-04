@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTPL-Insurance", "MTPL-Insurance.csproj", "{F4F6B722-A8A3-48D8-9BD1-B1CC3F6D6C5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4F6B722-A8A3-48D8-9BD1-B1CC3F6D6C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4F6B722-A8A3-48D8-9BD1-B1CC3F6D6C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4F6B722-A8A3-48D8-9BD1-B1CC3F6D6C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4F6B722-A8A3-48D8-9BD1-B1CC3F6D6C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47862C76-C102-48E6-BFFC-6A681547105F}
+	EndGlobalSection
+EndGlobal
