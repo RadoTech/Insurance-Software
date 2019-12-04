@@ -63,11 +63,11 @@ namespace MTPL_Insurance
             //    Console.Write("Please enter Vehicle's seats: ");
             //    int vehiclesSeats = int.Parse(Console.ReadLine());
             //}
-            else if (vehiclesType == "tractor")
-            {
-                Console.Write("Please enter Vehicle's Weight in tones: ");
-                double vehiclesWeight = double.Parse(Console.ReadLine());
-            }
+            //else if (vehiclesType == "tractor")
+            //{
+            //    Console.Write("Please enter Vehicle's Weight in tones: ");
+            //    double vehiclesWeight = double.Parse(Console.ReadLine());
+            //}
             else if (vehiclesType == "trailer")
             {
                 Console.Write("Please enter Trailer's length in meters: ");
@@ -96,6 +96,8 @@ namespace MTPL_Insurance
             double bus30 = 1200; //for bus with maximum seats of 30 (29+1). 
             double bus60 = 1800; //for bus with maximum seats of 60 (59+1). 
             double busOver60 = 2200; //for bus with maximum seats over 60(double-decker bus). 
+            double tractor20 = 150; //
+            double tractorOver20 = 290; //
 
             //Calculations:
 
@@ -210,6 +212,14 @@ namespace MTPL_Insurance
             {
                 Console.Write("Please enter Vehicle's Weight in tones: ");
                 double vehiclesWeight = double.Parse(Console.ReadLine());
+                if (vehiclesWeight <= 20)
+                {
+                    Premium += tractor20;
+                }
+                else if (vehiclesWeight > 20)
+                {
+                    Premium += tractorOver20;
+                }
             }
             else if (vehiclesType == "trailer")
             {
