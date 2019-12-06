@@ -54,8 +54,7 @@ namespace MTPL_Insurance
                 }
             }
 
-            //Tariff:
-
+            //Base Tariff with Rate 1.0:
             double motorElectric55Tariff = 65; //up to 55 kw for electric motor only
             double motorElectricOver55Tariff = 85.50; // over 55 kw for electric motor only
             double motor75Tariff = 75; //up to 50 kb. cm.
@@ -214,6 +213,72 @@ namespace MTPL_Insurance
                 else if (trailersLength > 10)
                 {
                     Premium += trailerOver10;
+                }
+            }
+            //Regions
+            double Sofia = 1.5; //Rate 
+            //Sofia region includes car plates(8): C, CA, CB, CO, PK, PB, B, PA.
+            double StaraZagora = 1.0; //Rate 
+            //StaraZagora region includes car plates(5): CT, A, P, BT, E.
+            double Blagoevgrad = 0.8; //Rate 
+            //Blagoevgrad region includes car plates(10): E, CH, CM, K, X, Y, KH, T, EB, OB,
+            double Border = 2.0; //Rate 
+            //Border region includes North border car plates(7): BH, M, BP, EH, CC, TX, PP,
+
+            Console.Write("Please enter vehicle's plate number without free spaces: ");
+            string numberPlate = Console.ReadLine();
+
+            for (int i = 0; i <= 1; i++)
+            {
+                char firstLetter = numberPlate[0];
+                char secondLetter = numberPlate[1];
+                if (Char.ToUpper(firstLetter) == 'C' && Char.ToUpper(secondLetter) == 'A')
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'C' && Char.ToUpper(secondLetter) == 'B')
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'C' && Char.ToUpper(secondLetter) == 'O')
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'P' && Char.ToUpper(secondLetter) == 'K')
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'P' && Char.ToUpper(secondLetter) == 'B')
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'P' && Char.ToUpper(secondLetter) == 'A')
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'C' && numberPlate.Length == 7)
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'B' && numberPlate.Length == 7)
+                {
+                    Premium *= Sofia;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Number Plate!");
+                    i --;
+                    Console.Write("Please enter vehicle's plate number without free spaces anew:");
+                    numberPlate = Console.ReadLine();
+                    continue;
                 }
             }
             //Output:
