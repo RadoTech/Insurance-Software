@@ -381,12 +381,67 @@ namespace MTPL_Insurance
                 else
                 {
                     Console.WriteLine("Invalid Number Plate!");
-                    i --;
+                    i--;
                     Console.Write("Please enter vehicle's plate number without free spaces anew:");
                     numberPlate = Console.ReadLine();
                     continue;
                 }
             }
+            //Discount section:
+            Console.Write("Do you have a discount code? YES or NO: ");
+            string discountCode = Console.ReadLine();
+            string upperDiscountCode = discountCode.ToUpper();
+            if (upperDiscountCode == "YES")
+            {
+                Console.Write("Please enter your discount code: ");
+                string code = Console.ReadLine();
+                for (int attempt = 1; attempt <= 3; attempt++)
+                {
+                    if (code == "RGR2@")
+                    {
+                        Premium *= 0.98;
+                        Console.WriteLine("2% discount has been used for this Insurance policy!");
+                        break;
+                    }
+                    else if (code == "RGR5%")
+                    {
+                        Premium *= 0.95;
+                        Console.WriteLine("5% discount has been used for this Insurance policy!");
+                        break;
+                    }
+                    else if (code == "RGR10!)")
+                    {
+                        Premium *= 0.90;
+                        Console.WriteLine("10% discount has been used for this Insurance policy!");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("!!!Invalid Discount Code!!");
+                        if (attempt == 1)
+                        {
+                            Console.WriteLine("You have 2 more attempts...");
+                        }
+                        else if (attempt == 2)
+                        {
+                            Console.WriteLine("You have 1 more attempts...");
+                        }
+                        else if (attempt == 3)
+                        {
+                            Console.WriteLine("You don't have more attemts.");
+                            discountCode = "NO";
+                            break;
+                        }
+                    }
+                    Console.Write("Please enter your discount code anew: ");
+                    code = Console.ReadLine();
+                }
+            }
+            if (upperDiscountCode == "NO")
+            {
+                Console.WriteLine("No discount available for this Insurance policy!");
+            }
+
             //Output:
             Console.WriteLine($"Your MTPL Premium is: {Premium:f2} BGN.");
         }
