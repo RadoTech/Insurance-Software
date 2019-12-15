@@ -219,11 +219,11 @@ namespace MTPL_Insurance
             double Sofia = 1.2; //Rate 
             //Sofia region includes car plates(8): C, CA, CB, CO, PK, PB, B, PA.
             double StaraZagora = 1.0; //Rate 
-            //StaraZagora region includes car plates(5): CT, A, P, BT, E.
+            //StaraZagora region includes car plates(5): CT, A, P, BT.
             double Blagoevgrad = 0.8; //Rate 
-            //Blagoevgrad region includes car plates(10): E, CH, CM, K, X, Y, KH, T, EB, OB,
-            double Border = 2.0; //Rate 
-            //Border region includes North border car plates(7): BH, M, BP, EH, CC, TX, PP,
+            //Blagoevgrad region includes car plates(10): E, CH, CM, K, X, Y, KH, T, EB, OB.
+            double Border = 2.0; //Rate - Highest Risk on Border Region according to Chief Actuary report. 
+            //Border region includes North border car plates(7): BH, M, BP, EH, CC, TX, PP.
 
             Console.Write("Please enter vehicle's plate number without free spaces: ");
             string numberPlate = Console.ReadLine();
@@ -292,9 +292,90 @@ namespace MTPL_Insurance
                     Premium *= StaraZagora;
                     break;
                 }
-                else if (Char.ToUpper(firstLetter) == 'E' && numberPlate.Length == 7)//Region Stara Zagora
+                else if (Char.ToUpper(firstLetter) == 'E' && numberPlate.Length == 7)//Region Blagoevgrad
                 {
-                    Premium *= StaraZagora;
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'X' && numberPlate.Length == 7)//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'K' && numberPlate.Length == 7)//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'Y' && numberPlate.Length == 7)//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'T' && numberPlate.Length == 7)//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'C' && Char.ToUpper(secondLetter) == 'H')//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'C' && Char.ToUpper(secondLetter) == 'M')//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'K' && Char.ToUpper(secondLetter) == 'H')//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'E' && Char.ToUpper(secondLetter) == 'B')//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'O' && Char.ToUpper(secondLetter) == 'B')//Region Blagoevgrad
+                {
+                    Premium *= Blagoevgrad;
+                    break;
+                }
+                //Highest Risk on Border Region according to Chief Actuary report. 
+                else if (Char.ToUpper(firstLetter) == 'B' && Char.ToUpper(secondLetter) == 'H')//Region Border
+                {
+                    Premium *= Border;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'B' && Char.ToUpper(secondLetter) == 'P')//Region Border
+                {
+                    Premium *= Border;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'E' && Char.ToUpper(secondLetter) == 'H')//Region Border
+                {
+                    Premium *= Border;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'C' && Char.ToUpper(secondLetter) == 'C')//Region Border
+                {
+                    Premium *= Border;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'T' && Char.ToUpper(secondLetter) == 'X')//Region Border
+                {
+                    Premium *= Border;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'P' && Char.ToUpper(secondLetter) == 'P')//Region Border
+                {
+                    Premium *= Border;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'M' && numberPlate.Length == 7)//Region Border
+                {
+                    Premium *= Border;
                     break;
                 }
                 else
