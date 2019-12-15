@@ -216,7 +216,7 @@ namespace MTPL_Insurance
                 }
             }
             //Regions
-            double Sofia = 1.5; //Rate 
+            double Sofia = 1.2; //Rate 
             //Sofia region includes car plates(8): C, CA, CB, CO, PK, PB, B, PA.
             double StaraZagora = 1.0; //Rate 
             //StaraZagora region includes car plates(5): CT, A, P, BT, E.
@@ -270,6 +270,31 @@ namespace MTPL_Insurance
                 else if (Char.ToUpper(firstLetter) == 'B' && numberPlate.Length == 7)
                 {
                     Premium *= Sofia;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'C' && Char.ToUpper(secondLetter) == 'T')//Region Stara Zagora
+                {
+                    Premium *= StaraZagora;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'B' && Char.ToUpper(secondLetter) == 'T')//Region Stara Zagora
+                {
+                    Premium *= StaraZagora;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'A' && numberPlate.Length == 7)//Region Stara Zagora
+                {
+                    Premium *= StaraZagora;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'P' && numberPlate.Length == 7)//Region Stara Zagora
+                {
+                    Premium *= StaraZagora;
+                    break;
+                }
+                else if (Char.ToUpper(firstLetter) == 'E' && numberPlate.Length == 7)//Region Stara Zagora
+                {
+                    Premium *= StaraZagora;
                     break;
                 }
                 else
