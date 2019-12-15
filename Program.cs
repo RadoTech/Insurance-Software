@@ -429,7 +429,7 @@ namespace MTPL_Insurance
                         else if (attempt == 3)
                         {
                             Console.WriteLine("You don't have more attemts.");
-                            discountCode = "NO";
+                            upperDiscountCode = "NO";
                             break;
                         }
                     }
