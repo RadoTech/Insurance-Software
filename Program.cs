@@ -25,11 +25,11 @@ namespace MTPL_Insurance
                     vehiclesType = Console.ReadLine();
                 }
             }
-
-            Console.Write("Please enter Vehicle's make: ");
-            string vehiclesMake = Console.ReadLine();
-            Console.Write("Please enter Vehicle's model: ");
-            string vehiclesModel = Console.ReadLine();
+            //below information is NOT needed for calculation purposes
+            //Console.Write("Please enter Vehicle's make: ");
+            //string vehiclesMake = Console.ReadLine();
+            //Console.Write("Please enter Vehicle's model: ");
+            //string vehiclesModel = Console.ReadLine();
 
             //Logic and additional input:
 
