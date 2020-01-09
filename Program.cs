@@ -441,7 +441,21 @@ namespace MTPL_Insurance
             {
                 Console.WriteLine("No discount available for this Insurance policy!");
             }
-
+            //Age section:
+            Console.Write("Please enter your age:");
+            int age = int.Parse(Console.ReadLine());
+            if (age < 25)
+            {
+                Premium *= 2;
+            }
+            else if (age >= 25 && age <= 65)
+            {
+                Premium *= 1;
+            }
+            else if (age > 65)
+            {
+                Premium *= 1.5;
+            }
             //Output:
             Console.WriteLine($"Your MTPL Premium is: {Premium:f2} BGN.");
         }
