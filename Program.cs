@@ -49,7 +49,7 @@ namespace MTPL_Insurance
             //Logic and additional input:
 
             double Premium = 0;
-            string vehiclesEnginesType = String.Empty;
+            string inputEnginesType = String.Empty;
             double vehiclesKw = 0;
             int vehiclesVolume = 0;
             bool validEngineType = false;
@@ -63,8 +63,23 @@ namespace MTPL_Insurance
             if (inputVehicleType == "car" || inputVehicleType == "motor")
             {
                 Console.Write("Please enter Vehicle's engine type: ");
-                vehiclesEnginesType = Console.ReadLine();
-                if (vehiclesEnginesType == "electric")
+                inputEnginesType = Console.ReadLine();
+
+                while (!validEngineType)
+                {
+                    if (vehicleEnginesList.Contains(inputEnginesType))
+                    {
+                        validEngineType = true;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("This is not a valid engine's type!");
+                        Console.Write("Please enter a valid engine's type: ");
+                        inputEnginesType = Console.ReadLine();
+                    }
+                }
+                    if (inputEnginesType == "electric")
                 {
                     Console.Write("Please enter Vehicle's Kw: ");
                     vehiclesKw = double.Parse(Console.ReadLine());
@@ -106,7 +121,7 @@ namespace MTPL_Insurance
 
             if (inputVehicleType == "car" || inputVehicleType == "motor")
             {
-                if (vehiclesEnginesType == "electric")
+                if (inputEnginesType == "electric")
                 {
                     if (vehiclesKw <= 55 && inputVehicleType == "motor")
                     {
