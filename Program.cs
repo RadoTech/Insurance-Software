@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MTPL_Insurance
 {
@@ -8,12 +10,24 @@ namespace MTPL_Insurance
         {
             //Input:
             Console.Write("Please enter Vehicle's type: ");
-            string vehiclesType = Console.ReadLine();
+
+            string inputVehicleType = Console.ReadLine();
             bool validVehicleType = false;
+
+            List<string> vehicleTypes = new List<string>(8);
+            vehicleTypes.Add("motor");
+            vehicleTypes.Add("car");
+            vehicleTypes.Add("light truck");
+            vehicleTypes.Add("truck");
+            vehicleTypes.Add("microbus");
+            vehicleTypes.Add("bus");
+            vehicleTypes.Add("tractor");
+            vehicleTypes.Add("trailer");
 
             while (!validVehicleType)
             {
-                if ((vehiclesType == "motor") || (vehiclesType == "car") || (vehiclesType == "light truck") || (vehiclesType == "truck") || (vehiclesType == "microbus") || (vehiclesType == "bus") || (vehiclesType == "tractor") || (vehiclesType == "trailer"))
+                if (vehicleTypes.Contains(inputVehicleType))
+
                 {
                     validVehicleType = true;
                     break;
@@ -22,10 +36,11 @@ namespace MTPL_Insurance
                 {
                     Console.WriteLine("This is not a valid vehicle's type!");
                     Console.Write("Please enter a valid vehicle's type: ");
-                    vehiclesType = Console.ReadLine();
+                    inputVehicleType = Console.ReadLine();
                 }
             }
-            //below information is NOT needed for calculation purposes
+            //below information is NOT needed for MTPL calculation purposes.
+            //To be included for MHull/Own damage insurance
             //Console.Write("Please enter Vehicle's make: ");
             //string vehiclesMake = Console.ReadLine();
             //Console.Write("Please enter Vehicle's model: ");
@@ -37,8 +52,15 @@ namespace MTPL_Insurance
             string vehiclesEnginesType = String.Empty;
             double vehiclesKw = 0;
             int vehiclesVolume = 0;
+            bool validEngineType = false;
 
-            if (vehiclesType == "car" || vehiclesType == "motor")
+            List<string> vehicleEnginesList = new List<string>(4);
+            vehicleEnginesList.Add("diesel");
+            vehicleEnginesList.Add("gasoline");
+            vehicleEnginesList.Add("hybrid");
+            vehicleEnginesList.Add("electric");
+
+            if (inputVehicleType == "car" || inputVehicleType == "motor")
             {
                 Console.Write("Please enter Vehicle's engine type: ");
                 vehiclesEnginesType = Console.ReadLine();
@@ -82,114 +104,114 @@ namespace MTPL_Insurance
 
             //Calculations:
 
-            if (vehiclesType == "car" || vehiclesType == "motor")
+            if (inputVehicleType == "car" || inputVehicleType == "motor")
             {
                 if (vehiclesEnginesType == "electric")
                 {
-                    if (vehiclesKw <= 55 && vehiclesType == "motor")
+                    if (vehiclesKw <= 55 && inputVehicleType == "motor")
                     {
                         Premium += motorElectric55Tariff;
                     }
-                    else if (vehiclesKw > 55 && vehiclesType == "motor")
+                    else if (vehiclesKw > 55 && inputVehicleType == "motor")
                     {
                         Premium += motorElectricOver55Tariff;
                     }
-                    else if (vehiclesKw <= 82 && vehiclesType == "car")
+                    else if (vehiclesKw <= 82 && inputVehicleType == "car")
                     {
                         Premium += carFullElectric82Tariff;
                     }
-                    else if (vehiclesKw > 82 && vehiclesType == "car")
+                    else if (vehiclesKw > 82 && inputVehicleType == "car")
                     {
                         Premium += carFullElectricOver82Tariff;
                     }
                 }
                 else
                 {
-                    if (vehiclesVolume <= 75 && vehiclesType == "motor")
+                    if (vehiclesVolume <= 75 && inputVehicleType == "motor")
                     {
                         Premium += motor75Tariff;
                     }
-                    else if (vehiclesVolume > 75 && vehiclesType == "motor")
+                    else if (vehiclesVolume > 75 && inputVehicleType == "motor")
                     {
                         Premium += motorOver75Tarif;
                     }
-                    else if (vehiclesVolume <= 1000 && vehiclesType == "car")
+                    else if (vehiclesVolume <= 1000 && inputVehicleType == "car")
                     {
                         Premium += car1000Tariff;
                     }
-                    else if (vehiclesVolume <= 1500 && vehiclesType == "car")
+                    else if (vehiclesVolume <= 1500 && inputVehicleType == "car")
                     {
                         Premium += car1500Tariff;
                     }
-                    else if (vehiclesVolume <= 2000 && vehiclesType == "car")
+                    else if (vehiclesVolume <= 2000 && inputVehicleType == "car")
                     {
                         Premium += car2000Tariff;
                     }
-                    else if (vehiclesVolume <= 3000 && vehiclesType == "car")
+                    else if (vehiclesVolume <= 3000 && inputVehicleType == "car")
                     {
                         Premium += car3000Tariff;
                     }
-                    else if (vehiclesVolume > 3000 && vehiclesType == "car")
+                    else if (vehiclesVolume > 3000 && inputVehicleType == "car")
                     {
                         Premium += carOver3000Tariff;
                     }
                 }
             }
-            else if (vehiclesType == "truck" || vehiclesType == "light truck")
+            else if (inputVehicleType == "truck" || inputVehicleType == "light truck")
             {
                 Console.Write("Please enter Vehicle's Weight in tones: ");
                 double vehiclesWeight = double.Parse(Console.ReadLine());
-                if (vehiclesType == "light truck" && vehiclesWeight <= 3.5)
+                if (inputVehicleType == "light truck" && vehiclesWeight <= 3.5)
                 {
                     Premium += lightTruck;
                 }
-                else if (vehiclesType == "light truck" && vehiclesWeight > 3.5)
+                else if (inputVehicleType == "light truck" && vehiclesWeight > 3.5)
                 {
-                    vehiclesType = "truck";
+                    inputVehicleType = "truck";
                 }
-                if (vehiclesType == "truck" && vehiclesWeight <= 5)
+                if (inputVehicleType == "truck" && vehiclesWeight <= 5)
                 {
                     Premium += truck5;
                 }
-                else if (vehiclesType == "truck" && vehiclesWeight <= 10)
+                else if (inputVehicleType == "truck" && vehiclesWeight <= 10)
                 {
                     Premium += truck10;
                 }
-                else if (vehiclesType == "truck" && vehiclesWeight <= 20)
+                else if (inputVehicleType == "truck" && vehiclesWeight <= 20)
                 {
                     Premium += truck20;
                 }
-                else if (vehiclesType == "truck" && vehiclesWeight > 20)
+                else if (inputVehicleType == "truck" && vehiclesWeight > 20)
                 {
                     Premium += truckOver20;
                 }
             }
-            else if (vehiclesType == "microbus" || vehiclesType == "bus")
+            else if (inputVehicleType == "microbus" || inputVehicleType == "bus")
             {
                 Console.Write("Please enter Vehicle's seats: ");
                 int vehiclesSeats = int.Parse(Console.ReadLine());
-                if (vehiclesType == "microbus" && vehiclesSeats <= 9)// 8+1 including driver's seat
+                if (inputVehicleType == "microbus" && vehiclesSeats <= 9)// 8+1 including driver's seat
                 {
                     Premium += microbus;
                 }
-                else if (vehiclesType == "microbus" && vehiclesSeats > 9)
+                else if (inputVehicleType == "microbus" && vehiclesSeats > 9)
                 {
-                    vehiclesType = "bus";
+                    inputVehicleType = "bus";
                 }
-                if (vehiclesType == "bus" && vehiclesSeats <= 30)
+                if (inputVehicleType == "bus" && vehiclesSeats <= 30)
                 {
                     Premium += bus30;
                 }
-                else if (vehiclesType == "bus" && vehiclesSeats <= 60)
+                else if (inputVehicleType == "bus" && vehiclesSeats <= 60)
                 {
                     Premium += bus60;
                 }
-                else if (vehiclesType == "bus" && vehiclesSeats > 60)
+                else if (inputVehicleType == "bus" && vehiclesSeats > 60)
                 {
                     Premium += busOver60;
                 }
             }
-            else if (vehiclesType == "tractor")
+            else if (inputVehicleType == "tractor")
             {
                 Console.Write("Please enter Vehicle's Weight in tones: ");
                 double vehiclesWeight = double.Parse(Console.ReadLine());
@@ -202,7 +224,7 @@ namespace MTPL_Insurance
                     Premium += tractorOver20;
                 }
             }
-            else if (vehiclesType == "trailer")
+            else if (inputVehicleType == "trailer")
             {
                 Console.Write("Please enter Trailer's length in meters: ");
                 double trailersLength = double.Parse(Console.ReadLine());
