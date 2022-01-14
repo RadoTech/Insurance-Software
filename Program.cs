@@ -8,7 +8,9 @@ namespace MTPL_Insurance
     {
         static void Main(string[] args)
         {
-            //Input:
+            //This is a Premium calculator for Motor Third Party Liability Insurance(MTPL)
+            //Initial input data:
+
             Console.Write("Please enter Vehicle's type: ");
 
             string inputVehicleType = Console.ReadLine();
@@ -39,14 +41,8 @@ namespace MTPL_Insurance
                     inputVehicleType = Console.ReadLine();
                 }
             }
-            //below information is NOT needed for MTPL calculation purposes.
-            //To be included for MHull/Own damage insurance
-            //Console.Write("Please enter Vehicle's make: ");
-            //string vehiclesMake = Console.ReadLine();
-            //Console.Write("Please enter Vehicle's model: ");
-            //string vehiclesModel = Console.ReadLine();
 
-            //Logic and additional input:
+            //Secondary Input && adding logic for vehicle type separation
 
             double Premium = 0;
             string inputEnginesType = String.Empty;
@@ -79,7 +75,7 @@ namespace MTPL_Insurance
                         inputEnginesType = Console.ReadLine();
                     }
                 }
-                    if (inputEnginesType == "electric")
+                if (inputEnginesType == "electric")
                 {
                     Console.Write("Please enter Vehicle's Kw: ");
                     vehiclesKw = double.Parse(Console.ReadLine());
@@ -91,7 +87,8 @@ namespace MTPL_Insurance
                 }
             }
 
-            //Base Tariff with Rate 1.0:
+            //Below are base the tarif premiums at base tariff Rate 1.0:
+
             double motorElectric55Tariff = 65; //up to 55 kw for electric motor only
             double motorElectricOver55Tariff = 85.50; // over 55 kw for electric motor only
             double motor75Tariff = 75; //up to 50 kb. cm.
@@ -117,7 +114,7 @@ namespace MTPL_Insurance
             double trailer10 = 75; //for trailers up to 10 meters length.
             double trailerOver10 = 175; //for trailers over 10 meters length.
 
-            //Calculations:
+            //Logic - Premium Calculations based on car type, engine type, weight, seats and length:
 
             if (inputVehicleType == "car" || inputVehicleType == "motor")
             {
@@ -252,7 +249,9 @@ namespace MTPL_Insurance
                     Premium += trailerOver10;
                 }
             }
-            //Regions
+
+            //Regions in Bulgaria(4) formed on actuarial calculations:
+            
             double Sofia = 1.2; //Rate 
             //Sofia region includes car plates(8): C, CA, CB, CO, PK, PB, B, PA.
             double StaraZagora = 1.0; //Rate 
@@ -424,7 +423,9 @@ namespace MTPL_Insurance
                     continue;
                 }
             }
-            //Discount section:
+
+            //Discounts section - valid discount codes:
+
             Console.Write("Do you have a discount code? YES or NO: ");
             string discountCode = Console.ReadLine();
             string upperDiscountCode = discountCode.ToUpper();
@@ -478,7 +479,9 @@ namespace MTPL_Insurance
             {
                 Console.WriteLine("No discount available for this Insurance policy!");
             }
-            //Age section:
+
+            //Driver Age section - Premium calculations based on the risk in each age range:
+
             Console.Write("Please enter your age:");
             int age = int.Parse(Console.ReadLine());
             if (age < 25)
@@ -493,7 +496,8 @@ namespace MTPL_Insurance
             {
                 Premium *= 1.5;
             }
-            //Output:
+
+            //Output: Total Premium (final)
             Console.WriteLine($"Your MTPL Premium is: {Premium:f2} BGN.");
         }
     }
