@@ -11,7 +11,7 @@ namespace MTPL_Insurance
             //This is a Premium calculator for Motor Third Party Liability Insurance(MTPL)
             //Initial input data:
 
-            Console.Write("Please enter Vehicle's type: ");
+            Console.Write("Please enter vehicle's type: ");
 
             string inputVehicleType = Console.ReadLine();
             bool validVehicleType = false;
@@ -58,7 +58,7 @@ namespace MTPL_Insurance
 
             if (inputVehicleType == "car" || inputVehicleType == "motor")
             {
-                Console.Write("Please enter Vehicle's engine type: ");
+                Console.Write("Please enter vehicle's engine type: ");
                 inputEnginesType = Console.ReadLine();
 
                 while (!validEngineType)
@@ -87,8 +87,33 @@ namespace MTPL_Insurance
                 }
             }
 
-            //Below are base the tarif premiums at base tariff Rate 1.0:
-
+            //Below are the base tariffs at base tariff Rate 1.0:
+            //var tariffDictionary = new Dictionary<string, double>();
+            //tariffDictionary.Add("motorElectric55Tariff", 65);        //up to 55 kw for electric motor only
+            //tariffDictionary.Add("motorElectricOver55Tariff", 85.50); // over 55 kw for electric motor only
+            //tariffDictionary.Add("motor50Tariff", 75);                //up to 50 kb. cm.
+            //tariffDictionary.Add("motorOver50Tarif", 95.50);          //over 50 kb cm.
+            //tariffDictionary.Add("carFullElectric82Tariff", 150);     //up to 82 kw for full electric cars only
+            //tariffDictionary.Add("carFullElectricOver82Tariff", 350); //over 82 kw for full electric cars only
+            //tariffDictionary.Add("car1000Tariff", 190);               //up to 1000 kb. cm. all engines except of full electric;
+            //tariffDictionary.Add("car1500Tariff", 290);               //up to 1500 kb. cm. all engines except of full electric;
+            //tariffDictionary.Add("car2000Tariff", 340);               //up to 2000 kb. cm. all engines except of full electric;
+            //tariffDictionary.Add("car3000Tariff", 390);               //up to 3000 kb. cm. all engines except of full electric;
+            //tariffDictionary.Add("carOver3000Tariff", 490);           //over 3000 kb. cm. all engines except of full electric;
+            //tariffDictionary.Add("lightTruck", 450);                  //for light trucks == trucks with weight in tones up to 3.5 t.
+            //tariffDictionary.Add("truck5", 580);                      //for trucks with weight up to 5 t.
+            //tariffDictionary.Add("truck10", 710);                     //for trucks with weight up to 10 t.
+            //tariffDictionary.Add("truck20", 930);                     //for trucks with weight up to 20 t.
+            //tariffDictionary.Add("truckOver20", 1500);                //for trucks with weight over 20 t.
+            //tariffDictionary.Add("microbus", 900);                    //for microbus & bus with maximum seats of 9 (8+1). 
+            //tariffDictionary.Add("bus30", 1200);                      //for bus with maximum seats of 30 (29+1). 
+            //tariffDictionary.Add("bus60", 1800);                      //for bus with maximum seats of 60 (59+1). 
+            //tariffDictionary.Add("busOver60", 2200);                  //for bus with maximum seats over 60(double-decker bus). 
+            //tariffDictionary.Add("tractor20", 150);                   //for agricultural tractors up to 20 tones weight.
+            //tariffDictionary.Add("tractorOver20", 290);               //for agricultural tractors over 20 tones weight.
+            //tariffDictionary.Add("trailer10", 75);                    //for trailers up to 10 meters length.
+            //tariffDictionary.Add("trailerOver10", 175);               //for trailers over 10 meters length.
+            
             double motorElectric55Tariff = 65; //up to 55 kw for electric motor only
             double motorElectricOver55Tariff = 85.50; // over 55 kw for electric motor only
             double motor75Tariff = 75; //up to 50 kb. cm.
@@ -115,7 +140,7 @@ namespace MTPL_Insurance
             double trailerOver10 = 175; //for trailers over 10 meters length.
 
             //Logic - Premium Calculations based on car type, engine type, weight, seats and length:
-
+           
             if (inputVehicleType == "car" || inputVehicleType == "motor")
             {
                 if (inputEnginesType == "electric")
@@ -251,7 +276,7 @@ namespace MTPL_Insurance
             }
 
             //Regions in Bulgaria(4) formed on actuarial calculations:
-            
+
             double Sofia = 1.2; //Rate 
             //Sofia region includes car plates(8): C, CA, CB, CO, PK, PB, B, PA.
             double StaraZagora = 1.0; //Rate 
